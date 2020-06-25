@@ -1,0 +1,9 @@
+%h1=t(:editing, :name=>@room.name)
+
+%p=t(:if_already_printed)
+
+= render 'form'
+
+= link_to t(:show), @room
+\|
+= link_to t(:back), rooms_path

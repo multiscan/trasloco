@@ -1,0 +1,6 @@
+= semantic_form_for @todo do |form|
+  = form.inputs do
+    = form.input :description
+  = form.actions do 
+    = form.action :submit, :as => :button
+    = form.action :cancel, :as => :link

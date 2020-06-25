@@ -1,0 +1,8 @@
+= simple_form_for @room do |f|
+  = f.input :floor, :as=>:select, :collection => [-1,0,1,2,3]
+  = f.input :name
+  - if @room.new_record? || @room.boxes.size==0
+    = f.input :label, :input_html => { :size => 4 }
+
+  = f.button :submit, class: "btn-primary"
+  = f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary"

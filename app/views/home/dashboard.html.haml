@@ -1,0 +1,42 @@
+-title "Dashboard"
+
+-# 
+  %h2
+    = current_user.move_date
+    = ":"
+    = current_user.moving_from
+    = t(:to)
+    = current_user.moving_to
+  - if current_user.moving_in<0
+    %p
+      =t(:should_move)
+      = link_to t(:change_move_date), edit_move_path
+      ?
+
+  %h3.stat
+    = current_user.moving_in
+    days to go
+  %p
+    = link_to t(:change_move_date), edit_move_path
+
+%h3.stat
+  =t(:boxes_done, :number=> current_user.boxes.size)
+%p
+  = link_to t(:add_a_box), new_box_path
+  |
+  = link_to t(:list_all_box), boxes_path
+
+%h3.stat
+  =t(:room_count, :number=>current_user.rooms.size)
+%p
+  = link_to t(:add_a_room), new_room_path
+  |
+  = link_to t(:list_all_room), rooms_path
+
+%h3.stat
+  =t(:print_menu)
+%ul
+  %li
+    = link_to t(:print_boxes_by_label), boxes_path(:asort=>'label')
+  %li
+    = link_to t(:print_boxes_by_room), boxes_path(:asort=>'room_id')

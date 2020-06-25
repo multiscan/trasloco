@@ -1,0 +1,19 @@
+- listid=0
+- @stodos.each_index do |group_index|
+  - todogroup = @stodos[group_index]
+  - if todogroup['todos'].size > 0
+    %h2=todogroup['timedesc']
+    %ul.todogroup
+      - todogroup['todos'].each do |todo|
+        %li{:id=>"suggestion#{listid}"}
+          =form_for(todo, :remote=>true) do |f|
+            =hidden_field('suggestion', 'id', :value=>listid)
+            =hidden_field('todo', 'description', :value=>todo.description)
+            %button{:type=>"submit", :value=>"Submit"}
+              %span=t(:add)
+          =todo.description
+        - listid=listid+1
+    =form_tag(create_todos_path, :method=>'post') do |f|
+      =hidden_field('suggest', 'group', :value=>group_index)
+      %button{:type=>"submit", :value=>"Submit"}=t(:add_group)
+    

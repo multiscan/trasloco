@@ -1,0 +1,33 @@
+%h1=t(:listing_boxes)
+
+%table.table
+  %thead
+    %tr
+      %th.center{scope: "col"}=Box.human_attribute_name(:label)
+      %th.center{scope: "col"}=Box.human_attribute_name(:room)
+      %th.center{scope: "col"}=Box.human_attribute_name(:fragile)
+      %th.center{scope: "col"}=Box.human_attribute_name(:description)
+      %th.left=t(:action)
+  %tbody
+    - @boxes.each do |box|
+      %tr{:class=>cycle('oddrow', 'evenrow')}
+        %td.right= link_to box.label, box
+        -if box.room
+          %td.center=link_to box.room.name, room_path(box.room)
+        -else
+          %td.center.strong=link_to t(:edit), edit_box_path(box)
+        %td.center= box.fragile ? t(:yess) : t(:nooo)
+        -if box.description.empty?
+          %td.center.strong= link_to t(:edit), edit_box_path(box)
+        -else
+          %td.left=box.description
+          -# %td.left= truncate(box.description, 160, "...") 
+        %td.left
+          = link_to t(:edit), edit_box_path(box)
+          |
+          = link_to t(:destroy), box, :confirm => t(:confirm), :method => :delete
+          |
+          = link_to t(:print_label), box_path(box, :format => :pdf)
+
+= link_to t(:new_box), new_box_path, class: 'btn btn-primary btn-sm'
+= link_to t(:print_all_labels), boxes_path(:format=>:pdf), class: 'btn btn-primary btn-sm'

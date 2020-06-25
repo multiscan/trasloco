@@ -1,0 +1,29 @@
+- title "#{@room.name}"
+%h1= @room.name
+%p
+  %b Floor:
+  = @room.floor
+%p
+  %b Label:
+  = @room.label
+
+= link_to 'Edit', edit_room_path(@room)
+\|
+= link_to 'Back', rooms_path
+
+- if @boxes
+  %h2 Boxes for this room
+  %table.table
+    %thead
+      %tr
+        %th{scope: "col"} Label
+        %th{scope: "col"} Fragile
+        %th{scope: "col"} Description
+        %th
+    %tbody
+      - @boxes.each do |box|
+        %tr
+          %td=box.label
+          %td=box.fragile ? "Yes" : "No"
+          %td=box.description
+          %td=link_to t(:edit), edit_box_path(box)

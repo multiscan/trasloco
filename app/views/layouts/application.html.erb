@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trasloco</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if Rails.env == "development" %>
+    <% end %>
+    <% if user_signed_in? %>
+    <nav class='site-header sticky-top py-1'>
+      <%= link_to(t(:home_nav), dashboard_path, class: 'btn btn-primary btn-sm py-2')%>
+      <%= link_to(t(:rooms_nav), rooms_path, class: 'py-2 btn btn-primary btn-sm')%>
+      <%= link_to(t(:boxes_nav), boxes_path, class: 'py-2 btn btn-primary btn-sm')%>
+      <%= link_to(t(:new_box), new_box_path, class: 'py-2 btn btn-success btn-sm')%>
+      <%= link_to(t(:new_room), new_room_path, class: 'py-2 btn btn-success btn-sm')%>
+      <%= link_to(t(:logout),  destroy_user_session_path, :method => 'delete', class: 'btn btn-danger btn-sm py-2') %>
+    </nav>
+    <% end %>
+
+
+
+      <div id='flashes'>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      <div id='content'>
+        <%= yield %>
+      </div>
+    <div id='footer'>
+      &copy; 2010 
+      <%= link_to "Giovanni Cangiani.", "mailto:giovanni.cangiani@epfl.ch" %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+\documentclass[a4paper,10pt]{article}
+
+% Note: does not print correctly from Preview.app
+% \usepackage[boxed]{ticket}
+\usepackage[]{ticket}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{graphicx}
+
+% For Helvetica fonts
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\bfdefault}{b}
+\usepackage{helvet}
+\usepackage{courier}
+\normalfont % in case the EC fonts aren't available
+\usepackage[T1]{fontenc}
+
+% tdf
+\unitlength=1mm
+\hoffset=-25.5mm
+\voffset=-28mm
+\ticketNumbers{1}{1}
+\ticketSize{210}{297}
+\ticketDistance{0}{0}
+
+\renewcommand{\ticketdefault}{}
+\begin{document}
+  <%= yield %>
+\end{document}

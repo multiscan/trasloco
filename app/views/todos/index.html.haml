@@ -1,0 +1,19 @@
+%h1=t(:listing, :name=>Todo.model_name.human(:count=>2))
+
+-if @todos
+  %ul#todos
+    - for todo in @todos
+      = content_tag :li, todo, :class=>'handle' do
+        -#%div.handle 
+          %span [drag]
+        = render :partial => 'toggler', :object => todo 
+        %div.description
+          =todo.description
+        %div.actions
+          = link_to t(:edit), edit_todo_url(todo)
+          &nbsp;|&nbsp;
+          = link_to t(:destroy), todo, :confirm => t(:confirm), :remote=>true, :method => :delete
+  .clear        
+  -# =sortable_element("todos", :url => sort_todos_path, :handle => "handle")
+= link_to t(:new, :name=>Todo.model_name.human(:count=>1)), new_todo_path
+= link_to t(:suggest_things_todo), suggest_todos_path

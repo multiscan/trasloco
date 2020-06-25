@@ -1,0 +1,10 @@
+= simple_form_for @box do |f|
+  = f.error_notification
+  - if @box.new_record?
+    = f.input :label
+  = f.association :room
+  = f.input :fragile
+  = f.input :description
+
+  = f.button :submit, class: "btn-primary"
+  = f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary"

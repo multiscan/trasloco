@@ -1,0 +1,19 @@
+- title "Box #{@box.label}"
+
+%p
+  %b Room:
+  = @box.room.name
+%p
+  %b Label:
+  = @box.label
+- if @box.fragile
+  %p
+    %strong
+      Fragile!
+%h2 Description:
+%p
+  = @box.description
+
+= link_to 'Edit', edit_box_path(@box)
+\|
+= link_to 'Back', boxes_path

@@ -1,0 +1,5 @@
+%h1=t(:show, :name=>Todo.model_name.human(:count=>1))
+
+= link_to 'Edit', edit_todo_path(@todo)
+\|
+= link_to 'Back', boxes_path

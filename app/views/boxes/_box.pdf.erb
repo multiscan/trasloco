@@ -1,0 +1,35 @@
+\ticket{%
+\fontfamily{phv}\selectfont
+%<% if box.fragile%>
+%  \begin{tikzpicture}[remember picture, overlay,scale=1]
+%    \clip (5mm,5mm) rectangle (100mm,70mm);
+%    \foreach \i in {0,1,...,500} {
+%      \pgfmathrandominteger{\x}{5}{100};
+%      \pgfmathrandominteger{\a}{-10}{10};
+%      \pgfmathrandominteger{\y}{5}{70};
+%      \pgfmathrandominteger{\c}{0}{50};
+%      \draw (\x mm,\y mm) node [rotate=\a,scale=0.5,color=black!\c]{\bfseries Fragile};
+%    }
+%  \end{tikzpicture}
+%<% end %>
+<% if box.fragile%>
+  \begin{tikzpicture}[remember picture, overlay,scale=1]
+    \filldraw[fill=red] (5mm,5mm) rectangle (100mm,13.5mm);
+    \draw (5mm,9mm) node [scale=2,anchor=west]{\color{white}Fragile Fragile Fragile Fragile};
+    \filldraw[fill=red] (5mm,62mm) rectangle (100mm,70.5mm);
+    \draw (5mm,66mm) node [scale=2,anchor=west]{\color{white}Fragile Fragile Fragile Fragile};
+  \end{tikzpicture}
+<% end %>
+\begin{tikzpicture}[remember picture, overlay,scale=1]    
+  <% if box.label %>
+    \filldraw[fill=black!50,rounded corners=2mm] (8mm,40mm) rectangle (23mm,60mm);
+    \draw (15.5mm,50mm) node [rotate=90,scale=4]{\color{white}<%=box.label%>};
+%  <% else %>
+%    \draw[rounded corners=2mm] (8mm,40mm) rectangle (23mm,60mm);
+  <% end %>
+  
+  \filldraw[fill=black,rounded corners=2mm] (8mm,15mm) rectangle (23mm,35mm);
+  \draw (15.5mm,25mm) node [scale=4]{\color{white}<%=box.room.floor%>};
+  \draw (65mm,37mm) node [scale=16]{\bfseries <%=box.room.label%>};
+\end{tikzpicture}
+}

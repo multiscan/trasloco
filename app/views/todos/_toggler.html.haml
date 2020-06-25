@@ -1,0 +1,11 @@
+%div{:id=>"toggler_#{toggler.id}", :class=>'toggler'}
+  = form_for(toggler, :remote=>true) do |f|
+    - if toggler.done
+      =hidden_field('todo', 'done', :value=>0, :id=>nil)
+      -#=content_tag_for :button, todo, :class=>"done", :value=>"Submit" do
+      %button{:type=>"submit", :value=>"Submit", :class=>"done"}
+        %span=t(:done)
+    - else
+      =hidden_field('todo', 'done', :value=>1, :id=>nil)
+      %button{:type=>"submit", :value=>"Submit", :class=>"pending"}
+        %span=t(:doit)

@@ -1,0 +1,144 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+
+en:
+  edit: "edit"
+  show: "details"
+  destroy: "destroy"
+  action: "action"
+  view_all: "View All"
+  confirm: "Are you sure?"  
+  editing: "Editing %{name}"
+  listing: "Listing %{name}"
+  editing_with_name: "Editing %{model} %{name}"
+  new: "New %{name}"  
+  yess: "Yes"
+  nooo: "No"
+  to: "to"
+  from: "from"
+  add: "add"
+  add_group: "Add all todos of this group"
+  
+
+# errors
+  unauthorized: "You are not authorized to access the page that you have requested."
+
+# special sentences
+  print_label: "print label"
+  print_all_labels: "Print labels for all %{name}"
+  noblank: "Can't be blank"
+  add_box_to_room: "add a box"
+  n_of_boxes: "N. of Boxes"
+  commit_move_edit: "Save"
+  should_move: "You should have moved already. Would you like to" 
+  change_move_date: "change the move date"
+  add_a_box: "One more box"
+  list_all_box: "List all boxes"
+  add_a_room: "Add a room"
+  list_all_room: "List all rooms"
+  boxes_done: "You have %{number} boxes"
+  room_count: "%{number} rooms defined in the new house"
+  if_already_printed: "If you have already printed labels for boxes in this room, you shouldn't modify its label."
+  suggest_things_todo: "Suggest me todos"
+  generic_box_label: "Box Labels"
+
+# login stuff
+  login: "login"
+  logout: "logout"
+  register: "register"
+  signed_in_as: "you are signed in as %{name}"
+  not_you: "Not you ?"
+  
+# navigation menu
+  home_nav: "Home"
+  rooms_nav: "Rooms"
+  boxes_nav: "Boxes"
+  todos_nav: "ToDos"
+  newbox_nav: "New Box"
+
+# --------------------------------------------------------------- ActiveSupport
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+      
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+      
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datetime_select.
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+      
+# Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+# ---------------------------------------------------------------- ActiveRecord
+  activerecord:
+    errors:
+      messages:
+        taken: "has already been taken"
+        record_invalid: "Validation failed: %{errors}"
+        blank: "Can't be blank. Minchione se vedi la stellina"
+    models:
+      box:
+        one: "Box"
+        other: "Boxes"
+      room:
+        one: "Room"
+        other: "Rooms"
+      todo:
+        one: "Todo"
+        other: "Todos"
+      user:
+        one: "User"
+        other: "Users"
+    attributes:
+      box:
+        description: "Content description"
+        label: "Unique label"
+        fragile: "Fragile content"
+        room: "Destination Room"
+      room:
+        floor: "Floor"
+        label: "Unique label"
+        name: "Name"
+      todo:
+        description: "Description"
+        done: "Done"
+      user:
+        moving_from: "Moving from"
+        moving_to: "Moving to"
+        move_date: "Move date"
+        
+#------------------------------------------------------------------------ Flash
+flash:
+    actions:
+      create:
+        notice: "{resource_name} was successfully created"
+      update:
+        notice: "{resource_name} was successfully updated"
+      destroy:
+        notice: "{resource_name} was successfully destroyed"
+        alert: "{resource_name} could not be destroyed"
