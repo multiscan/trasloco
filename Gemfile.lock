@@ -56,8 +56,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    acts_as_list (1.0.1)
-      activerecord (>= 4.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.13)
@@ -137,7 +135,7 @@ GEM
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
     public_suffix (4.0.5)
-    puma (3.12.2)
+    puma (3.12.6)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -198,7 +196,6 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simple_navigation (1.4.5)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -246,7 +243,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list
   bootsnap (>= 1.4.2)
   capybara (>= 2.15)
   devise
@@ -260,7 +256,6 @@ DEPENDENCIES
   sass-rails (~> 5)
   selenium-webdriver
   simple_form
-  simple_navigation
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
