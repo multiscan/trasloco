@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    environment:
+      RAILS_ENV: production
+      APP_NAME: ${APP_NAME:-trasloco}
+      APP_DOMAIN: ${APP_DOMAIN:-cangiani.me}
+      DB_DIR: ${DB_DIR:-/data}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    labels:
+      - traefik.docker.network=traefik
+      - traefik.http.routers.${APP_NAME}.rule=Host("${APP_NAME}.${APP_DOMAIN}")
+      - traefik.http.routers.${APP_NAME}.tls=true
+      - traefik.http.services.${APP_NAME}.loadbalancer.server.port=3000
+    networks:
+      - traefik
+      - default
+networks:
+  traefik:
+    external: true
+

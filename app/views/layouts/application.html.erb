@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trasloco</title>
+    <title>Trasloco <%= "[dev]" if Rails.env=="development" %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -13,8 +13,6 @@
   </head>
 
   <body>
-    <% if Rails.env == "development" %>
-    <% end %>
     <% if user_signed_in? %>
     <nav class='site-header sticky-top py-1'>
       <%= link_to(t(:home_nav), dashboard_path, class: 'btn btn-primary btn-sm py-2')%>
@@ -25,8 +23,6 @@
       <%= link_to(t(:logout),  destroy_user_session_path, :method => 'delete', class: 'btn btn-danger btn-sm py-2') %>
     </nav>
     <% end %>
-
-
 
       <div id='flashes'>
         <% flash.each do |name, msg| %>

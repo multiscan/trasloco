@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  web:
+    # rebuild required each gime a new gem is added
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      APP_NAME: ${APP_NAME:-trasloco}
+      APP_DOMAIN: ${APP_DOMAIN:-dev.jkldsa.com}
+      DB_DIR: ${DB_DIR:-/data}
+    volumes:
+      - ./data:/data
+      - ./app:/app/app
+      - ./config:/app/config
+      - ./db:/app/db
+      - ./public:/app/public
+    labels:
+      - traefik.docker.network=traefik
+      - traefik.http.routers.${APP_NAME}.rule=Host("${APP_NAME}.${APP_DOMAIN}")
+      - traefik.http.routers.${APP_NAME}.tls=true
+      - traefik.http.services.${APP_NAME}.loadbalancer.server.port=3000
+    networks:
+      - traefik
+      - default
+networks:
+  traefik:
+    external: true
+

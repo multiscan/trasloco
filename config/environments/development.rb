@@ -64,4 +64,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.hosts << "#{ENV.fetch('APP_NAME', 'trasloco')}.#{ENV.fetch('APP_DOMAIN', 'dev.jkldsa.com')}"
 end
