@@ -1,6 +1,6 @@
 class Todo < ApplicationRecord
   belongs_to :user
-  acts_as_list :scope => :user
+  # acts_as_list :scope => :user
   def toggle_done
     self.done = (not self.done)
   end
